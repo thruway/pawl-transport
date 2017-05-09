@@ -1,0 +1,33 @@
+{
+    "name": "thruway/pawl-transport",
+    "type": "library",
+    "description": "Pawl WebSocket Transport for Thruway Client",
+    "keywords": [
+        "WebSockets",
+        "Client",
+        "WAMP",
+        "WAMP2",
+        "Autobahn",
+        "Sockets",
+        "thruway"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Bonneau", "email": "matt@bonneau.net", "role": "Developer"
+        },
+
+        {
+            "name": "David Dan", "email": "davidwdan@gmail.com", "role": "Developer"
+        }
+    ],
+    "require": {
+        "voryx/thruway": "dev-ratchet-0.4",
+        "ratchet/pawl": "^0.2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thruway\\Transport\\": "src/"
+        }
+    }
+}
