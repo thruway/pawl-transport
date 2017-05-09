@@ -22,7 +22,6 @@
         }
     ],
     "require": {
-        "voryx/thruway": "dev-ratchet-0.4",
         "ratchet/pawl": "^0.2.3"
     },
     "autoload": {
