@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "ratchet/pawl": "^0.2.3"
+        "ratchet/pawl": "^0.3.1"
     },
     "autoload": {
         "psr-4": {
