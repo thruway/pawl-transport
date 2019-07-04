@@ -2,6 +2,9 @@
 
 namespace Thruway\Transport;
 
+use Ratchet\Client\Connector as RatchetConnector;
+use React\Socket\Connector;
+use React\Socket\ConnectorInterface;
 use Thruway\Exception\DeserializationException;
 use Thruway\Logging\Logger;
 use Ratchet\Client\WebSocket;
@@ -22,13 +25,20 @@ class PawlTransportProvider extends AbstractClientTransportProvider
     private $URL;
 
     /**
+     * @var ConnectorInterface
+     */
+    private $connector;
+
+    /**
      * Constructor
      *
      * @param string $URL
      */
-    public function __construct($URL = "ws://127.0.0.1:8080/")
+    public function __construct($URL = "ws://127.0.0.1:8080/", ConnectorInterface $connector = null)
     {
         $this->URL     = $URL;
+
+        $this->connector = $connector;
     }
 
     /**
@@ -44,7 +54,9 @@ class PawlTransportProvider extends AbstractClientTransportProvider
         $this->client    = $client;
         $this->loop      = $loop;
 
-        \Ratchet\Client\connect($this->URL, ['wamp.2.json'], [], $loop)->then(
+        $ratchetConnector = new RatchetConnector($loop, $this->connector ?: new Connector($loop));
+
+        $connection = $ratchetConnector($this->URL, ['wamp.2.json'], [])->then(
             function (WebSocket $conn) {
                 Logger::info($this, "Pawl has connected");
 
