@@ -4,7 +4,6 @@ namespace Thruway\Transport;
 
 use React\EventLoop\LoopInterface;
 use React\EventLoop\Timer\TimerInterface;
-use React\Promise\Deferred;
 use Thruway\Message\Message;
 
 /**
@@ -81,6 +80,6 @@ class PawlTransport extends AbstractTransport
     public function ping($timeout = 10)
     {
         return false;
-        
+
     }
 }
